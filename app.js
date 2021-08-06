@@ -320,7 +320,7 @@ bot.on("message", message => {
             }
 
             //Language!
-            if ((message.content.toLowerCase().includes("damn") || message.content.toLowerCase().includes("dammit") || message.content.toLowerCase().includes("cap.gif")) && message.content.toLowerCase() !== "damnright.gif") {
+            if ((message.content.toLowerCase().includes("damn") || message.content.toLowerCase().includes("dammit") || message.content.toLowerCase().includes("cap.gif")) && message.content.toLowerCase() !== "damnright.gif" && message.channel.name !== "the-therapy-couch") {
                 var captain = new MessageAttachment("https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2Ftenor.gif");
                 message.channel.send(captain);
                 console.log("You got it, Cap.");
