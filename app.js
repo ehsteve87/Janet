@@ -344,7 +344,7 @@ bot.on("message", message => {
                 console.log("I didn't know it was your birthday!");
                  switch (message.author.discriminator) {
                      case "5760": //Steve
-                         message.channel.send("https://www.youtube.com/watch?v=MUqxArkN4g8");
+                         message.channel.send("https://www.youtube.com/watch?v=v-0xugvRnUg");
                          break;
 
                      case "0216": //Kiffen
