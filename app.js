@@ -24,7 +24,7 @@ var triggerArray = require("./modules/triggered");
 
 var Gif = require("./modules/gifSchema");
 
-var taken = ["cavdance.gif", "word.gif", "cap.gif", "punch.gif", "facepalm.gif", "hi5.gif", "triggered.gif"];
+var taken = ["cavdance.gif", "word.gif", "cap.gif", "facepalm.gif", "hi5.gif", "triggered.gif"];
 
 //MongoDB stuff!**************************************
 var uri = process.env.DB_URL;
@@ -175,6 +175,14 @@ bot.on('ready', () => {
 bot.on("message", message => {
      //This line makes it so the bot can't call itself
     if (message.author.discriminator !== "4751") {
+        //Cavan Dance
+        if (message.content.toLowerCase().includes("cavdance.gif")) {
+            var cavGif = new MessageAttachment("https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2FCavan.gif");
+            message.channel.send(cavGif);
+            console.log("He can dance if he wants to!");
+            console.log(typeof message.author.discriminator);
+        }
+
         //Congratulations!
         if (message.content.toLowerCase().includes("congratulations!")) {
             var congratGif = new MessageAttachment(congratsArray[congratCounter - 1]);
@@ -183,52 +191,12 @@ bot.on("message", message => {
             congratCounter = cycle(congratCounter, congratsArray);
             console.log(congratCounter);
         }
-      
-        //Triggered
-        if (message.content.toLowerCase() === "triggered.gif") {
-            var triggeredGif = new MessageAttachment(triggerArray[triggerCounter - 1]);
-            message.channel.send(triggeredGif);
-            console.log("You didn't even warn me!");
-            triggerCounter = cycle(triggerCounter, triggerArray);
-            console.log(triggerCounter);
-        }
-
-        //Cavan Dance
-        if (message.content.toLowerCase().includes("cavdance.gif")) {
-            var cavGif = new MessageAttachment("https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2FCavan.gif");
-            message.channel.send(cavGif);
-            console.log("He can dance if he wants to!");
-            console.log(typeof message.author.discriminator);
-        }
     
         //Dab  
         if (message.content.toLowerCase() === "!dab") {
             var dabImage = new MessageAttachment("https://cdn.discordapp.com/attachments/456875845483757570/619267446322364426/1929402_1005494306791_3146_n.png");
             message.channel.send(dabImage);
             console.log("ヽ( •_•)ᕗ");
-        }
-      
-        //facepalm.gif
-        if (message.content.toLowerCase() === "facepalm.gif") {
-            var facepalmGif = new MessageAttachment(facepalmArray[Math.floor(Math.random() * facepalmArray.length)]);
-            message.channel.send(facepalmGif);
-            console.log("Ugh...");
-        }
-
-        //Sean!
-        if (message.content.toLowerCase() === "sean!") {
-            var seanPicture = new MessageAttachment("https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2Fsean2.gif");
-            message.channel.send(seanPicture);
-            console.log("Dangit, Sean!");
-            console.log(typeof message.author.discriminator);
-        }
-      
-        //Shrug
-        if (message.content.includes("¯\\_(ツ)_/¯")){
-          setTimeout(function(){
-            message.channel.send("¯\\_(ツ)_/¯");
-            console.log("¯\\_(ツ)_/¯");
-          }, 1000);  //wait 1000 ms before responding
         }
         
         //Echo
@@ -237,6 +205,64 @@ bot.on("message", message => {
             console.log("Echo!");
             console.log("author id: " + message.author.discriminator);
         }
+
+        //facepalm.gif
+        if (message.content.toLowerCase() === "facepalm.gif") {
+            var facepalmGif = new MessageAttachment(facepalmArray[Math.floor(Math.random() * facepalmArray.length)]);
+            message.channel.send(facepalmGif);
+            console.log("Ugh...");
+        }
+
+        //Happy birthday
+        if (message.content.toLowerCase().includes("happy birthday!")) {
+            console.log("I didn't know it was your birthday!");
+                switch (message.author.discriminator) {
+                    case "5760": //Steve
+                        message.channel.send("https://www.youtube.com/watch?v=v-0xugvRnUg");
+                        break;
+
+                    case "0216": //Kiffen
+                        message.channel.send("https://www.youtube.com/watch?v=8zgz2xBrvVQ");
+                        break;
+
+                    case "2682": //Sean
+                        message.channel.send("https://www.youtube.com/watch?v=pCR9aI0jvuA");
+                        break;
+
+                    case "8015": //Tom
+                        message.channel.send("https://www.youtube.com/watch?v=7u4pVvhqI-s");
+                            //formerly https://www.nbc.com/saturday-night-live/video/happy-birthday/2860793
+                            //or https://www.dailymotion.com/video/xir8t6
+                        break;
+
+                    case "8032": //Clarissa
+                        message.channel.send("https://giphy.com/gifs/birthday-happy-birthday-cake-forever-yung-xT0BKqhdlKCxCNsVTq");
+                        break;
+                
+                    case "7084": //Roz
+                        message.channel.send("https://www.youtube.com/watch?v=6t1vaF50Ks0");
+                        break;
+
+                    case "5985": //Dennis
+                        message.channel.send("https://www.youtube.com/watch?v=NkoRl5CZhF8");
+                        break;
+
+                    case "9070": //Todd
+                        message.channel.send("Chocolate boxes");
+                        break;
+
+                    case "7947": //Kayla
+                        message.channel.send("https://youtu.be/S-LRITaHUbI");
+                        break;
+
+                    case "4751": //Response Bot
+                        break;
+
+                    default:
+                        message.channel.send("Looks like you don't yet have a custom birthday message. Let Steve know what you'd like to send and he'll get it set up.");
+                }
+        }
+
         //High Five
         if (message.content.toLowerCase() === "hi5.gif" || message.content.toLowerCase().includes("janet, hi5") || message.content.toLowerCase().includes("janet, high five")) {
             var pic = new MessageAttachment("https://66.media.tumblr.com/f9aa4cf7be5072dd8dfd4ce73597a474/tumblr_oyee7p3N351wtl4k2o2_250.gif");
@@ -247,13 +273,32 @@ bot.on("message", message => {
             );
             console.log("Thanks, babe.");
         }
-      
-        //Ron
-        if (message.content.toLowerCase().slice(0,4) === "ron:") {
-            message.channel.send("Ron Howard:" + message.content.slice(4));
-            message.delete({options: {timeout: 100000}});
-            console.log("It was Arrested Development.");
-            console.log("author id: " + message.author.discriminator);
+
+        //Kill all the poor
+        if(message.content.toLowerCase().includes("kill all the poor") || message.content.toLowerCase().includes("kill the poor") 
+        || message.content.toLowerCase().includes("killing all the poor") || message.content.toLowerCase().includes("killing the poor")){
+            var killThePoorArray = [
+                "With respect, we've had this conversation before...",
+                "I'm not saying _do_ it; I'm just saying run it through the computer, see if it would work.",
+                "So you think it _might_ work?",
+                "We need them for all the things that we don't fancy.",
+                "Are you thinking of immigrants?",
+                "I can't believe you haven't done it drunk as a joke.",
+                "Have you tried raise VAT and kill all the poor?",
+                "The computer says it wouldn't help, so we're not doing it!",
+                "Bloody hell, now _I'm_ offended!",
+                "It's morally wrong, _" + message.author.username + "_.",
+                "Shave half a percent off interest rates, shore up the pound, keep VAT steady for now, and round up all the dwarfs."
+            ];
+            message.channel.send(killThePoorArray[Math.floor(Math.random()*killThePoorArray.length)]);
+            console.log("https://www.youtube.com/watch?v=owI7DOeO_yg");
+        }
+
+        //Language!
+        if ((message.content.toLowerCase().includes("damn") || message.content.toLowerCase().includes("dammit") || message.content.toLowerCase().includes("cap.gif")) && message.content.toLowerCase() !== "damnright.gif" && message.channel.name !== "the-therapy-couch") {
+            var captain = new MessageAttachment("https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2Ftenor.gif");
+            message.channel.send(captain);
+            console.log("You got it, Cap.");
         }
   
         //Leap of Faith
@@ -270,27 +315,6 @@ bot.on("message", message => {
             console.log("Here you go!");
             console.log(typeof message.author.discriminator);
         }
-
-        //Sound
-        if (message.content.toLowerCase().includes("new record") || message.content.toLowerCase().includes("new lap record")) {
-            var sound = new Discord.MessageAttachment("https://cdn.discordapp.com/attachments/550428943501623298/776528304743776266/it_s_a_new_lap_record_-3498164912892836578_1.mp3");
-            message.channel.send(sound);
-            console.log("It's a new lap record!");
-        }
-
-        //Punch!  
-        if (message.content.toLowerCase() === "punch.gif") {
-            var seanPicture = new MessageAttachment("https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2Fmarvelpunch.gif");
-            message.channel.send(seanPicture);
-            console.log("Right in the kisser");
-        }
-      
-        //TEST**TEST**TEST
-        //This shows how to get a user object from the Cool People guild. 
-        if (message.content.toLowerCase() === "authortest") {
-            message.channel.send(bot.guilds.get('456875845483757568').members.get(message.author).toString());
-            console.log(bot.guilds.get('456875845483757568').members.get(message.author));
-        }  
 
         //Minesweeper
         if (message.content.toLowerCase() === "minesweeper") {
@@ -312,82 +336,62 @@ bot.on("message", message => {
             console.log("New game of minesweeper!");
           }
 
-            //Nerds!
-            if (message.content.toLowerCase() === "nerds!") {
-                var nerds = new MessageAttachment("https://media.giphy.com/media/A9KfKenpqNDfa/giphy.gif"); //https://media.giphy.com/media/A9KfKenpqNDfa/giphy.gif  <-this is the real gif
-                message.channel.send(nerds);
-                console.log("Freaking nerds.");
-            }
+        //Nerds!
+        if (message.content.toLowerCase() === "nerds!") {
+            var nerds = new MessageAttachment("https://media.giphy.com/media/A9KfKenpqNDfa/giphy.gif"); //https://media.giphy.com/media/A9KfKenpqNDfa/giphy.gif  <-this is the real gif
+            message.channel.send(nerds);
+            console.log("Freaking nerds.");
+        }
 
-            //Language!
-            if ((message.content.toLowerCase().includes("damn") || message.content.toLowerCase().includes("dammit") || message.content.toLowerCase().includes("cap.gif")) && message.content.toLowerCase() !== "damnright.gif" && message.channel.name !== "the-therapy-couch") {
-                var captain = new MessageAttachment("https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2Ftenor.gif");
-                message.channel.send(captain);
-                console.log("You got it, Cap.");
-            }
+        //Ron
+        if (message.content.toLowerCase().slice(0,4) === "ron:") {
+            message.channel.send("Ron Howard:" + message.content.slice(4));
+            message.delete({options: {timeout: 100000}});
+            console.log("It was Arrested Development.");
+            console.log("author id: " + message.author.discriminator);
+        }
+
+        //Sean!
+        if (message.content.toLowerCase() === "sean!") {
+            var seanPicture = new MessageAttachment("https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2Fsean2.gif");
+            message.channel.send(seanPicture);
+            console.log("Dangit, Sean!");
+            console.log(typeof message.author.discriminator);
+        }
       
-            //Fire Thumbs Up
-            if (message.content.toLowerCase() === "!y"){
-                var thumb = new MessageAttachment("https://media.tenor.com/images/1cf02a0b665a45fc94d4184ebda9cb11/tenor.gif");
-                message.channel.send(thumb);
-                console.log("Hasta la vista, baby");
-            }
-            //Word!
-            if (message.content.toLowerCase() === "word.gif") {
-                var chapelle = new MessageAttachment("https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2Fchapelle.gif");
-                message.channel.send(chapelle);
-                console.log("Word!");
-            }
+        //Shrug
+        if (message.content.includes("¯\\_(ツ)_/¯")){
+          setTimeout(function(){
+            message.channel.send("¯\\_(ツ)_/¯");
+            console.log("¯\\_(ツ)_/¯");
+          }, 1000);  //wait 1000 ms before responding
+        }      
+        
+        //Sound
+        if (message.content.toLowerCase().includes("new record") || message.content.toLowerCase().includes("new lap record")) {
+            var sound = new Discord.MessageAttachment("https://cdn.discordapp.com/attachments/550428943501623298/776528304743776266/it_s_a_new_lap_record_-3498164912892836578_1.mp3");
+            message.channel.send(sound);
+            console.log("It's a new lap record!");
+        }
+      
 
-            //Happy birthday
-            if (message.content.toLowerCase().includes("happy birthday!")) {
-                console.log("I didn't know it was your birthday!");
-                 switch (message.author.discriminator) {
-                     case "5760": //Steve
-                         message.channel.send("https://www.youtube.com/watch?v=v-0xugvRnUg");
-                         break;
+        //Triggered
+        if (message.content.toLowerCase() === "triggered.gif") {
+            var triggeredGif = new MessageAttachment(triggerArray[triggerCounter - 1]);
+            message.channel.send(triggeredGif);
+            console.log("You didn't even warn me!");
+            triggerCounter = cycle(triggerCounter, triggerArray);
+            console.log(triggerCounter);
+        }
 
-                     case "0216": //Kiffen
-                         message.channel.send("https://www.youtube.com/watch?v=8zgz2xBrvVQ");
-                         break;
+        //Word!
+        if (message.content.toLowerCase() === "word.gif") {
+            var chapelle = new MessageAttachment("https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2Fchapelle.gif");
+            message.channel.send(chapelle);
+            console.log("Word!");
+        }
 
-                     case "2682": //Sean
-                         message.channel.send("https://www.youtube.com/watch?v=pCR9aI0jvuA");
-                         break;
 
-                     case "8015": //Tom
-                         message.channel.send("https://www.youtube.com/watch?v=7u4pVvhqI-s");
-                             //formerly https://www.nbc.com/saturday-night-live/video/happy-birthday/2860793
-                             //or https://www.dailymotion.com/video/xir8t6
-                         break;
-
-                     case "8032": //Clarissa
-                         message.channel.send("https://giphy.com/gifs/birthday-happy-birthday-cake-forever-yung-xT0BKqhdlKCxCNsVTq");
-                         break;
-                    
-                     case "7084": //Roz
-                         message.channel.send("https://www.youtube.com/watch?v=6t1vaF50Ks0");
-                         break;
-
-                    case "5985": //Dennis
-                        message.channel.send("https://www.youtube.com/watch?v=NkoRl5CZhF8");
-                        break;
-
-                    case "9070": //Todd
-                        message.channel.send("Chocolate boxes");
-                        break;
-
-                    case "7947": //Kayla
-                        message.channel.send("https://youtu.be/S-LRITaHUbI");
-                        break;
-
-                     case "4751": //Response Bot
-                         break;
-
-                     default:
-                         message.channel.send("Looks like you don't yet have a custom birthday message. Let Steve know what you'd like to send and he'll get it set up.");
-                 }
-            }
         
 //******************START OF DATABASE************************
 var createExpression = new RegExp("newGif [a-zA-Z0-9._\-]+\.gif https?[^ ]+\.gif", "i");
@@ -455,7 +459,7 @@ if (message.content.toLowerCase() == "giflist"){
         //This one contains the index
         if (message.content.toLowerCase() === "janet" || message.content.toLowerCase() === "response bot") {
             var responses = "Hi, I'm Janet! \ncap.gif \ncavdance.gif \nCongratulations! \n!dab \necho [text] \nfacepalm.gif " +
-            "\ngifList \nHappy Birthday! \n hi5.gif \nLink? \nMinesweeper \nNerds! \npunch.gif \nRon: [text] \nSean! \ntriggered.gif \nword.gif \n!y";
+            "\ngifList \nHappy Birthday! \n hi5.gif \nLink? \nMinesweeper \nNerds! \nRon: [text] \nSean! \ntriggered.gif \nword.gif \n!y";
             message.channel.send(responses);
             console.log("Glad I could help.");
         }
