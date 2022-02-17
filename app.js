@@ -255,6 +255,10 @@ bot.on("message", message => {
                         message.channel.send("https://youtu.be/S-LRITaHUbI");
                         break;
 
+                    case "6092": //Angela
+                        message.channel.send("https://www.youtube.com/watch?v=kcA2M3Az6Us&t=33s");
+                        break;
+
                     case "4751": //Response Bot
                         break;
 
