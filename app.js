@@ -259,6 +259,10 @@ bot.on("message", message => {
                         message.channel.send("https://www.youtube.com/watch?v=kcA2M3Az6Us&t=33s");
                         break;
 
+                    case "5657": //Emmerin
+                        message.channel.send("https://youtu.be/UYE834sgtSs");
+                        break;
+
                     case "4751": //Response Bot
                         break;
 
