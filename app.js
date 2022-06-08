@@ -14,8 +14,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 
 var Discord = require("discord.js");
-var bot = new Discord.Client();
-var {Client} = require("discord.js");
+var {Client, Intents} = require("discord.js");
+var bot = new Discord.Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 var {MessageAttachment} = require("discord.js");
 
 var congratsArray = require("./modules/congratulations");
@@ -172,7 +172,7 @@ bot.on('ready', () => {
     console.log('Ready to roll!');
 });
 
-bot.on("message", message => {
+bot.on("messageCreate", message => {
      //This line makes it so the bot can't call itself
     if (message.author.discriminator !== "4751") {
         //Cavan Dance
