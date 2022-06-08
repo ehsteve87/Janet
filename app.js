@@ -277,7 +277,7 @@ bot.on("messageCreate", message => {
             message.channel.send(pic).then(
             setTimeout(function () {
               message.channel.send("hi5");
-              }, 4000)
+              }, 3000)
             );
             console.log("Thanks, babe.");
         }
