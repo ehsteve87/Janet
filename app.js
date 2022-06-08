@@ -177,7 +177,7 @@ bot.on("messageCreate", message => {
     if (message.author.discriminator !== "4751") {
         //Cavan Dance
         if (message.content.toLowerCase().includes("cavdance.gif")) {
-            var cavGif = new MessageAttachment("https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2FCavan.gif");
+            var cavGif = "https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2FCavan.gif";
             message.channel.send(cavGif);
             console.log("He can dance if he wants to!");
             console.log(typeof message.author.discriminator);
@@ -185,7 +185,7 @@ bot.on("messageCreate", message => {
 
         //Congratulations!
         if (message.content.toLowerCase().includes("congratulations!")) {
-            var congratGif = new MessageAttachment(congratsArray[congratCounter - 1]);
+            var congratGif = congratsArray[congratCounter - 1];
             message.channel.send(congratGif);
             console.log("We're so proud!");
             congratCounter = cycle(congratCounter, congratsArray);
@@ -194,7 +194,7 @@ bot.on("messageCreate", message => {
     
         //Dab  
         if (message.content.toLowerCase() === "!dab") {
-            var dabImage = new MessageAttachment("https://cdn.discordapp.com/attachments/456875845483757570/619267446322364426/1929402_1005494306791_3146_n.png");
+            var dabImage = "https://cdn.discordapp.com/attachments/456875845483757570/619267446322364426/1929402_1005494306791_3146_n.png";
             message.channel.send(dabImage);
             console.log("ヽ( •_•)ᕗ");
         }
@@ -208,7 +208,7 @@ bot.on("messageCreate", message => {
 
         //facepalm.gif
         if (message.content.toLowerCase() === "facepalm.gif") {
-            var facepalmGif = new MessageAttachment(facepalmArray[Math.floor(Math.random() * facepalmArray.length)]);
+            var facepalmGif = facepalmArray[Math.floor(Math.random() * facepalmArray.length)];
             message.channel.send(facepalmGif);
             console.log("Ugh...");
         }
@@ -273,7 +273,7 @@ bot.on("messageCreate", message => {
 
         //High Five
         if (message.content.toLowerCase() === "hi5.gif" || message.content.toLowerCase().includes("janet, hi5") || message.content.toLowerCase().includes("janet, high five")) {
-            var pic = new MessageAttachment("https://66.media.tumblr.com/f9aa4cf7be5072dd8dfd4ce73597a474/tumblr_oyee7p3N351wtl4k2o2_250.gif");
+            var pic = "https://66.media.tumblr.com/f9aa4cf7be5072dd8dfd4ce73597a474/tumblr_oyee7p3N351wtl4k2o2_250.gif";
             message.channel.send(pic).then(
             setTimeout(function () {
               message.channel.send("hi5");
@@ -304,21 +304,20 @@ bot.on("messageCreate", message => {
 
         //Language!
         if ((message.content.toLowerCase().includes("damn") || message.content.toLowerCase().includes("dammit") || message.content.toLowerCase().includes("cap.gif")) && message.content.toLowerCase() !== "damnright.gif" && message.channel.name !== "the-therapy-couch") {
-            var captain = new MessageAttachment("https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2Ftenor.gif");
+            var captain = "https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2Ftenor.gif";
             message.channel.send(captain);
             console.log("You got it, Cap.");
         }
   
         //Leap of Faith
         if (message.content.toLowerCase().includes("leap of faith")) {
-            var cavGif = new MessageAttachment("https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2FCavan.gif");
             message.channel.send("It's better translated as a leap into faith.");
             console.log("Kirkegaard, baby!");
         }
       
         //Link?
         if (message.content.toLowerCase() === "link?") {
-            var linkPicture = new MessageAttachment("https://vignette.wikia.nocookie.net/joke-battles/images/8/8b/Link4.png");
+            var linkPicture = "https://vignette.wikia.nocookie.net/joke-battles/images/8/8b/Link4.png";
             message.channel.send(linkPicture);
             console.log("Here you go!");
             console.log(typeof message.author.discriminator);
@@ -346,7 +345,7 @@ bot.on("messageCreate", message => {
 
         //Nerds!
         if (message.content.toLowerCase() === "nerds!") {
-            var nerds = new MessageAttachment("https://media.giphy.com/media/A9KfKenpqNDfa/giphy.gif"); //https://media.giphy.com/media/A9KfKenpqNDfa/giphy.gif  <-this is the real gif
+            var nerds = "https://media.giphy.com/media/A9KfKenpqNDfa/giphy.gif"; 
             message.channel.send(nerds);
             console.log("Freaking nerds.");
         }
@@ -361,7 +360,7 @@ bot.on("messageCreate", message => {
 
         //Sean!
         if (message.content.toLowerCase() === "sean!") {
-            var seanPicture = new MessageAttachment("https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2Fsean2.gif");
+            var seanPicture = "https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2Fsean2.gif";
             message.channel.send(seanPicture);
             console.log("Dangit, Sean!");
             console.log(typeof message.author.discriminator);
@@ -377,15 +376,19 @@ bot.on("messageCreate", message => {
         
         //Sound
         if (message.content.toLowerCase().includes("new record") || message.content.toLowerCase().includes("new lap record")) {
-            var sound = new Discord.MessageAttachment("https://cdn.discordapp.com/attachments/550428943501623298/776528304743776266/it_s_a_new_lap_record_-3498164912892836578_1.mp3");
-            message.channel.send(sound);
+            var sound = "https://cdn.discordapp.com/attachments/550428943501623298/776528304743776266/it_s_a_new_lap_record_-3498164912892836578_1.mp3";
+            message.channel.send({
+                files: [{
+                    attachment: sound
+                }]
+            });
             console.log("It's a new lap record!");
         }
       
 
         //Triggered
         if (message.content.toLowerCase() === "triggered.gif") {
-            var triggeredGif = new MessageAttachment(triggerArray[triggerCounter - 1]);
+            var triggeredGif = triggerArray[triggerCounter - 1];
             message.channel.send(triggeredGif);
             console.log("You didn't even warn me!");
             triggerCounter = cycle(triggerCounter, triggerArray);
@@ -394,7 +397,7 @@ bot.on("messageCreate", message => {
 
         //Word!
         if (message.content.toLowerCase() === "word.gif") {
-            var chapelle = new MessageAttachment("https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2Fchapelle.gif");
+            var chapelle = "https://cdn.glitch.com/08e88dba-4367-4844-909a-786d085467a9%2Fchapelle.gif";
             message.channel.send(chapelle);
             console.log("Word!");
         }
