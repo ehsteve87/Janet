@@ -226,6 +226,7 @@ bot.on("messageCreate", message => {
                     throw "Invalid Date";
                 }
                 message.channel.send("The date halfway between then and now is " + halfwayDate + ".");
+                console.log("Time, man.");
             } catch (error){
                 message.channel.send("Something went wrong. Use this format: `halfwaydate 01 Jan 2000`");
             }
