@@ -213,6 +213,24 @@ bot.on("messageCreate", message => {
             console.log("Ugh...");
         }
 
+        //Halfway Date
+        if(message.content.toLowerCase().substring(0,11) === "halfwaydate"){
+            try{
+                var todayInMilliseconds = new Date().getTime();
+                var oldDateArray = message.content.split(" ");
+                var oldDateString = oldDateArray[1] + " " + oldDateArray[2] + " " + oldDateArray[3];
+                var oldDateInMilliseconds = Date.parse(oldDateString);
+                var average = (todayInMilliseconds + oldDateInMilliseconds)/2;
+                var halfwayDate = new Date(average).toLocaleDateString('en-us', { year:"numeric", month:"long", day:"numeric"});
+                if(halfwayDate == "Invalid Date"){
+                    throw "Invalid Date";
+                }
+                message.channel.send("The date halfway between then and now is " + halfwayDate + ".");
+            } catch (error){
+                message.channel.send("Something went wrong. Use this format: `halfwaydate 01 Jan 2000`");
+            }
+        }
+
         //Happy birthday
         if (message.content.toLowerCase().includes("happy birthday!")) {
             console.log("I didn't know it was your birthday!");
@@ -470,7 +488,7 @@ if (message.content.toLowerCase() == "giflist"){
         //This one contains the index
         if (message.content.toLowerCase() === "janet" || message.content.toLowerCase() === "response bot") {
             var responses = "Hi, I'm Janet! \ncap.gif \ncavdance.gif \nCongratulations! \n!dab \necho [text] \nfacepalm.gif " +
-            "\ngifList \nHappy Birthday! \n hi5.gif \nLink? \nMinesweeper \nNerds! \nRon: [text] \nSean! \ntriggered.gif \nword.gif \n!y";
+            "\ngifList \nhalfwaydate [01 Jan 2000] \nHappy Birthday! \n hi5.gif \nLink? \nMinesweeper \nNerds! \nRon: [text] \nSean! \ntriggered.gif \nword.gif \n!y";
             message.channel.send(responses);
             console.log("Glad I could help.");
         }
