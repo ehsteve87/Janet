@@ -391,7 +391,18 @@ bot.on("messageCreate", message => {
             message.channel.send("¯\\_(ツ)_/¯");
             console.log("¯\\_(ツ)_/¯");
           }, 1000);  //wait 1000 ms before responding
-        }      
+        }    
+        
+        //Sins
+        if (message.content.toLowerCase().includes("wash") && message.content.toLowerCase().includes("away") && message.content.toLowerCase().includes("sins")) {
+            var sins = "https://cdn.discordapp.com/attachments/984225953305739274/995781335635460146/washAway.mp3";
+            message.channel.send({
+                files: [{
+                    attachment: sins
+                }]
+            });
+            console.log("He's gonna wash away his seeeeins!");
+        }
         
         //Sound
         if (message.content.toLowerCase().includes("new record") || message.content.toLowerCase().includes("new lap record")) {
