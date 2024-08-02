@@ -13,9 +13,7 @@
   "author": "Steve Decker",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^14.15.3"
-  },
-  "devDependencies": {
+    "discord.js": "^14.15.3",
     "g-sheets-api": "^2.2.0"
   }
 }
