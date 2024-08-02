@@ -66,14 +66,10 @@ client.on('messageCreate', message => {
 		message.channel.send("https://docs.google.com/spreadsheets/d/1GAgl3VNQAMRlCY2skEWvf7v-cO26sJ52NnS79JQ91DA/edit#gid=0")
 	}
 
-
-
 	if(message.content.includes("damn")){
 		message.channel.send("https://i.imgur.com/V5pFeic.gif")
 		console.log(message)
 	}
-
-
 
 });
 
