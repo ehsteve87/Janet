@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, Intents } = require('discord.js');
-const { token } = require('./config.json');
+const { token, googleAPIkey } = require('./config.json');
 const reader = require('g-sheets-api');
 
 // Create a new client instance
@@ -44,7 +44,7 @@ for (const file of eventFiles) {
 client.on('messageCreate', message => {
 	if(message.content.slice(-4)===".gif") {
 		const readerOptions = {
-            apiKey: 'AIzaSyBnMTNGHcx6p40sUKO136-TlXmzWRPEbLg',
+            apiKey: googleAPIkey,
             sheetId: '1GAgl3VNQAMRlCY2skEWvf7v-cO26sJ52NnS79JQ91DA',
             returnAllResults: false,
             filter: {
