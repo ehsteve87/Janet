@@ -42,6 +42,7 @@ for (const file of eventFiles) {
 
 // Commands that read from messages go here
 client.on('messageCreate', message => {
+	//gifs
 	if(message.content.slice(-4)===".gif") {
 		const readerOptions = {
             apiKey: googleAPIkey,
@@ -62,13 +63,26 @@ client.on('messageCreate', message => {
 		});
 	}
 
+	//giflist
 	if(message.content.toLowerCase() === "giflist"){
 		message.channel.send("<https://docs.google.com/spreadsheets/d/1GAgl3VNQAMRlCY2skEWvf7v-cO26sJ52NnS79JQ91DA/edit#gid=0>")
 	}
 
+	//Cap.gif
 	if(message.content.toLowerCase().includes("damn") && !message.content.toLowerCase().includes("damnright.gif") && message.channel.name !== "the-therapy-couch"){
 		message.channel.send("https://i.imgur.com/V5pFeic.gif")
 		console.log(message)
+	}
+
+	//High Five
+	if (message.content.toLowerCase() === "hi5.gif" || message.content.toLowerCase().includes("janet, hi5") || message.content.toLowerCase().includes("janet, high five")) {
+		var pic = "https://66.media.tumblr.com/f9aa4cf7be5072dd8dfd4ce73597a474/tumblr_oyee7p3N351wtl4k2o2_250.gif";
+		message.channel.send(pic).then(
+		setTimeout(function () {
+		  message.channel.send("hi5");
+		  }, 3000)
+		);
+		console.log("Thanks, babe.");
 	}
 
 });
