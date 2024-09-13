@@ -74,9 +74,16 @@ client.on('messageCreate', message => {
 		console.log(message)
 	}
 
+	//Dab  
+	if (message.content.toLowerCase() === "!dab") {
+		let dabImage = "https://cdn.discordapp.com/attachments/456875845483757570/619267446322364426/1929402_1005494306791_3146_n.png";
+		message.channel.send(dabImage);
+		console.log("ヽ( •_•)ᕗ");
+	}
+
 	//High Five
 	if (message.content.toLowerCase() === "hi5.gif" || message.content.toLowerCase().includes("janet, hi5") || message.content.toLowerCase().includes("janet, high five")) {
-		var pic = "https://66.media.tumblr.com/f9aa4cf7be5072dd8dfd4ce73597a474/tumblr_oyee7p3N351wtl4k2o2_250.gif";
+		let pic = "https://66.media.tumblr.com/f9aa4cf7be5072dd8dfd4ce73597a474/tumblr_oyee7p3N351wtl4k2o2_250.gif";
 		message.channel.send(pic).then(
 		setTimeout(function () {
 		  message.channel.send("hi5");
