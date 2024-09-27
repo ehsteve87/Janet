@@ -81,6 +81,13 @@ client.on('messageCreate', message => {
 		console.log("ヽ( •_•)ᕗ");
 	}
 
+	//Eat their young 
+	if (message.content.toLowerCase().includes("eat their young")) {
+		message.channel.send("<https://discord.com/channels/456875845483757568/456875845483757570/1287675814275711058>");
+		console.log("Ewwwww");
+	}
+
+
 	//High Five
 	if (message.content.toLowerCase() === "hi5.gif" || message.content.toLowerCase().includes("janet, hi5") || message.content.toLowerCase().includes("janet, high five")) {
 		let pic = "https://66.media.tumblr.com/f9aa4cf7be5072dd8dfd4ce73597a474/tumblr_oyee7p3N351wtl4k2o2_250.gif";
