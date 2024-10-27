@@ -67,13 +67,12 @@ client.on('messageCreate', message => {
 	//giflist
 	if(message.content.toLowerCase() === "giflist"){
 		message.channel.send("<https://docs.google.com/spreadsheets/d/1GAgl3VNQAMRlCY2skEWvf7v-cO26sJ52NnS79JQ91DA/edit#gid=0>");
-		console.log(message.channel);
 	}
 
 	//Cap.gif
 	if(message.content.toLowerCase().includes("damn") && !message.content.toLowerCase().includes("damnright.gif") && message.channel.name !== "the-therapy-couch"){
 		message.channel.send("https://i.imgur.com/V5pFeic.gif")
-		console.log(message)
+		console.log("You got it, cap")
 	}
 
 	//Dab  
