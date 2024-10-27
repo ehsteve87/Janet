@@ -3,6 +3,7 @@ const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, Intents } = require('discord.js');
 const { token, googleAPIkey } = require('./config.json');
 const reader = require('g-sheets-api');
+const schedule = require('node-schedule');
 
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
@@ -65,7 +66,8 @@ client.on('messageCreate', message => {
 
 	//giflist
 	if(message.content.toLowerCase() === "giflist"){
-		message.channel.send("<https://docs.google.com/spreadsheets/d/1GAgl3VNQAMRlCY2skEWvf7v-cO26sJ52NnS79JQ91DA/edit#gid=0>")
+		message.channel.send("<https://docs.google.com/spreadsheets/d/1GAgl3VNQAMRlCY2skEWvf7v-cO26sJ52NnS79JQ91DA/edit#gid=0>");
+		console.log(message.channel);
 	}
 
 	//Cap.gif
@@ -98,8 +100,15 @@ client.on('messageCreate', message => {
 		);
 		console.log("Thanks, babe.");
 	}
-
 });
+
+//Timed messages go here. Use Cron format for the date and time.
+client.on('ready',() => {
+	//October 24
+	schedule.scheduleJob('0 10 24 10 *', function(){
+		client.channels.cache.get('456875845483757570').send("https://cdn.discordapp.com/attachments/456875845483757570/1299039715315421345/image0.jpg?ex=671e6383&is=671d1203&hm=16b94aed91cc05cebb59406595874d6badd87009778e15cfe2ba466c2903eefb&");
+	})
+})
 
 // Log in to Discord with your client's token
 client.login(token);
