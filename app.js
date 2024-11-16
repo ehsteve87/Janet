@@ -99,6 +99,27 @@ client.on('messageCreate', message => {
 		);
 		console.log("Thanks, babe.");
 	}
+
+	//Kill the poor
+	const killPoorPattern = /.*kill.*the poor.*/i;
+	if (killPoorPattern.test(message.content)) {
+		const killThePoorArray = [
+			"With respect, we've had this conversation before...",
+			"I'm not saying _do_ it; I'm just saying run it through the computer, see if it would work.",
+			"So you think it _might_ work?",
+			"We need them for all the things that we don't fancy.",
+			"Are you thinking of immigrants?",
+			"I can't believe you haven't done it drunk as a joke.",
+			"Have you tried raise VAT and kill all the poor?",
+			"The computer says it wouldn't help, so we're not doing it!",
+			"Bloody hell, now _I'm_ offended!",
+			"It's morally wrong, _" + message.author.username + "_.",
+			"Shave half a percent off interest rates, shore up the pound, keep VAT steady for now, and round up all the dwarfs."
+		];
+		message.channel.send(killThePoorArray[Math.floor(Math.random()*killThePoorArray.length)]);
+		console.log("https://www.youtube.com/watch?v=owI7DOeO_yg");
+	}
+
 });
 
 //Timed messages go here. Use Cron format for the date and time.
