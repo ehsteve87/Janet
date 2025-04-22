@@ -66,7 +66,7 @@ client.on('messageCreate', message => {
 
 	//giflist
 	if(message.content.toLowerCase() === "giflist"){
-		message.channel.send("<https://docs.google.com/spreadsheets/d/1GAgl3VNQAMRlCY2skEWvf7v-cO26sJ52NnS79JQ91DA/edit#gid=0>");
+		message.channel.send("<https://docs.google.com/spreadsheets/d/1GAgl3VNQAMRlCY2skEWvf7v-cO26sJ52NnS79JQ91DA/edit?usp=sharing>");
 	}
 
 	//Cap.gif
