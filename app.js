@@ -115,10 +115,10 @@ client.on('messageCreate', message => {
 
 });
 
-//Timed messages go here. Use Cron format for the date and time.
+//Timed messages go here. Use Cron format for the date and time. Keep in mind that the server is six hours behind MDT
 client.on('ready',() => {
 	//October 24
-	schedule.scheduleJob('0 10 24 10 *', function(){
+	schedule.scheduleJob('0 16 24 10 *', function(){
 		client.channels.cache.get('456875845483757570').send("https://cdn.discordapp.com/attachments/456875845483757570/1299039715315421345/image0.jpg?ex=671e6383&is=671d1203&hm=16b94aed91cc05cebb59406595874d6badd87009778e15cfe2ba466c2903eefb&");
 	})
 })
