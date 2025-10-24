@@ -117,9 +117,29 @@ client.on('messageCreate', message => {
 
 //Timed messages go here. Use Cron format for the date and time. Keep in mind that the server is six hours behind MDT
 client.on('ready',() => {
-	//October 24
+	//October 24 10:00 AM (16:00 server time)
 	schedule.scheduleJob('0 16 24 10 *', function(){
 		client.channels.cache.get('456875845483757570').send("https://cdn.discordapp.com/attachments/456875845483757570/1299039715315421345/image0.jpg?ex=671e6383&is=671d1203&hm=16b94aed91cc05cebb59406595874d6badd87009778e15cfe2ba466c2903eefb&");
+	})
+
+	//April 25
+	schedule.scheduleJob('0 14 25 4 *', function(){
+		client.channels.cache.get('456875845483757570').send("https://giphy.com/gifs/mtv-miss-congeniality-april-25th-WTmHBUnYzorwA");
+	})
+
+	//November 5
+	schedule.scheduleJob('0 14 5 11 *', function(){
+		client.channels.cache.get('456875845483757570').send("https://tenor.com/view/remember-remember-v-for-vendetta-happy-guy-fawkes-day-the5th-of-november-gif-12829141");
+	})
+
+	//October 3
+	schedule.scheduleJob('0 14 3 10 *', function(){
+		client.channels.cache.get('456875845483757570').send("https://giphy.com/gifs/paramountmovies-mean-girls-october-3rd-day-8PvjfqJZHkR8osILHU");
+	})
+
+	//February 14
+	schedule.scheduleJob('0 14 14 2 *', function(){
+		client.channels.cache.get('456875845483757570').send("https://imgur.com/gallery/oh-its-valentines-day-ngzLBPT");
 	})
 })
 
